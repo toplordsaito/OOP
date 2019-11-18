@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package swing;
+import javax.swing.*;
 
 /**
  *
@@ -11,6 +12,7 @@ package swing;
  */
 public class Supplier {
     private int sid;
+    private JFrame frame;
     private String fname, lname, address, tel, des;
     private String img = "default.png";
     public int getSid() {
@@ -26,7 +28,12 @@ public class Supplier {
     }
 
     public void setFname(String fname) {
-        this.fname = fname;
+        if (Function.isAllLetter(fname)) {
+            this.fname = fname;
+        }
+        else {
+            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public String getLname() {
@@ -34,7 +41,12 @@ public class Supplier {
     }
 
     public void setLname(String lname) {
-        this.lname = lname;
+        if (Function.isAllLetter(lname)) {
+            this.lname = lname;
+        }
+        else {
+            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public String getAddress() {
@@ -58,7 +70,12 @@ public class Supplier {
     }
 
     public void setTel(String tel) {
-        this.tel = tel;
+        if (Function.isAllNumber(tel)) {
+            this.tel = tel;
+        }
+        else {
+            JOptionPane.showMessageDialog(frame, "Input only an interger please.", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public String getDes() {

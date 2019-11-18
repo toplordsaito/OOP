@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package swing;
+import javax.swing.*;
 
 /**
  *
@@ -11,6 +12,7 @@ package swing;
  */
 public class Category {
     private int cid, product, max, min;
+     private JFrame frame;
     private String name;
 
     public int getCid() {
@@ -50,7 +52,12 @@ public class Category {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (Function.isAllLetter(name)) {
+            this.name = name;
+        }
+        else {
+            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

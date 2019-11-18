@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package swing;
-import javax.swing.*;
 
 /**
  *
@@ -15,7 +14,6 @@ public class Product {
     private int pid, count, price, cid, sid;
     private String name, des;
     private String img = "default.png";
-    private JFrame frame;
     public Product() {
     }
     
@@ -65,12 +63,7 @@ public class Product {
     }
 
     public void setName(String name) {
-        if (Function.isAllLetter(name)) {
-            this.name = name;
-        }
-        else {
-            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
-         }
+        this.name = name;
     }
 
     public String getImg() {
@@ -88,6 +81,5 @@ public class Product {
     public void setDes(String des) {
         this.des = des;
     }
-    
 
 }

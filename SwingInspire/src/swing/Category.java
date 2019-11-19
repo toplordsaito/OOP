@@ -5,6 +5,8 @@
  */
 package swing;
 
+import javax.swing.*;
+
 /**
  *
  * @author waruwat
@@ -12,6 +14,7 @@ package swing;
 public class Category {
     private int cid, product, max, min;
     private String name;
+    private JFrame frame;
 
     public int getCid() {
         return cid;
@@ -50,7 +53,12 @@ public class Category {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (Function.isAllLetter(name)) {
+            this.name = name;
+        }
+        else {
+            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

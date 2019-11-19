@@ -6,14 +6,24 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javax.swing.GroupLayout.Group;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -106,37 +116,55 @@ public class HomePanel extends javax.swing.JPanel {
         JFXPanel fxPanel;
         JPanel mainPanel = new JPanel(new BorderLayout());
         fxPanel = new JFXPanel();
-
         mainPanel.add(fxPanel, BorderLayout.CENTER);
-
-        JLabel titleLabel = new JLabel("ยอดคงเหลือ");
-
-        mainPanel.add(titleLabel, BorderLayout.NORTH);
+        JButton b1 = new JButton("Change Chart");
+        JLabel titleLabel = new JLabel("All Sales");
+        titleLabel.setFont(new Font("Courier", Font.BOLD, 30));
+        JPanel p = new JPanel(new GridLayout(1, 5));
+        p.add(new JLabel(""));
+        p.add(new JLabel(""));
+        titleLabel.setForeground(Color.white);
+        p.setBackground(Color.	darkGray);
+        p.add(titleLabel);
+        p.add(new JLabel(""));
+        p.add(b1);
+        mainPanel.add(p, BorderLayout.NORTH);
+        
         JFrame framePie = new JFrame();
         framePie.add(mainPanel);
         framePie.setVisible(true);
-        framePie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        framePie.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         framePie.setSize(800, 800);
-
-        GridPane grid = new GridPane();
-        Scene scene = new Scene(grid, 800, 800);
-        NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
-        //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
-        lineYAxis.setLabel("Numbers");
-        CategoryAxis lineXAxis = new CategoryAxis();
-        lineXAxis.setLabel("Products");
-        BarChart barChart
-                = new BarChart<>(lineXAxis, lineYAxis);
-
-        for (int i = 0; i < list.size(); i++) {
-            XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
-            series1.setName(list.get(i).getName());
-            series1.getData().add(new XYChart.Data<String, Number>(list.get(i).getName(), list.get(i).getCount()));
-            barChart.getData().add(series1);
+        
+        //GridPane grid = new GridPane();
+        
+                
+        PieChart pieChart = new PieChart();
+                for (int i = 0; i < list.size(); i++) {
+            PieChart.Data slice1 = new PieChart.Data(list.get(i).getName(), list.get(i).getCount());
+            pieChart.getData().add(slice1);
         }
-        XYChart.Series bar1 = new XYChart.Series<>();
-
+              
+        StackPane root = new StackPane(pieChart);
+        Scene scene = new Scene(root,800,800);
+//        GridPane grid = new GridPane();
+//        Scene scene = new Scene(grid, 800, 800);
+//        NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
+//        //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
+//        lineYAxis.setLabel("Numbers");
+//        CategoryAxis lineXAxis = new CategoryAxis();
+//        lineXAxis.setLabel("Products");
+//        BarChart barChart
+//                = new BarChart<>(lineXAxis, lineYAxis);
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
+//            series1.setName(list.get(i).getName());
+//            series1.getData().add(new XYChart.Data<String, Number>(list.get(i).getName(), list.get(i).getCount()));
+//            barChart.getData().add(series1);
+//        }
+//        XYChart.Series bar1 = new XYChart.Series<>();
 //        bar10.setName("Computing Devices");
 //        bar1.getData().add(getData(40000, "Desktop"));
 //        bar1.getData().add(getData(30_000, "Netbooks"));
@@ -150,11 +178,11 @@ public class HomePanel extends javax.swing.JPanel {
 //        bar2.getData().add(getData(50_000, "Microwave Ovens"));
 //
 //        barChart.getData().addAll(bar1, bar2);
-        grid.setVgap(50);
-        grid.setHgap(75);
-        grid.add(barChart, 1, 1);
+
+   
         fxPanel.setScene(scene);
-        barChart.setPrefSize(600, 600);
+        pieChart.setMinSize(700, 700);
+        pieChart.setStartAngle(180); 
 
     }//GEN-LAST:event_jButton1ActionPerformed
     private XYChart.Data getData(double x, String y) {

@@ -115,7 +115,7 @@ public class HomePanel extends javax.swing.JPanel {
         JFrame framePie = new JFrame();
         framePie.add(mainPanel);
         framePie.setVisible(true);
-        framePie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framePie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         framePie.setSize(800, 800);
 

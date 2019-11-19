@@ -5,8 +5,6 @@
  */
 package swing;
 
-import javax.swing.*;
-
 /**
  *
  * @author waruwat
@@ -15,8 +13,6 @@ public class Supplier {
     private int sid;
     private String fname, lname, address, tel, des;
     private String img = "default.png";
-    private JFrame frame;
-    
     public int getSid() {
         return sid;
     }
@@ -30,12 +26,7 @@ public class Supplier {
     }
 
     public void setFname(String fname) {
-        if (Function.isAllLetter(fname)) {
-            this.fname = fname;
-        }
-        else {
-            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
-        }
+        this.fname = fname;
     }
 
     public String getLname() {
@@ -43,12 +34,7 @@ public class Supplier {
     }
 
     public void setLname(String lname) {
-        if (Function.isAllLetter(lname)) {
-            this.lname = lname;
-        }
-        else {
-            JOptionPane.showMessageDialog(frame, "Input only a character please.", "Error", JOptionPane.INFORMATION_MESSAGE);
-        }
+        this.lname = lname;
     }
 
     public String getAddress() {
@@ -72,12 +58,7 @@ public class Supplier {
     }
 
     public void setTel(String tel) {
-        if (Function.isAllNumber(tel)) {
-            this.tel = tel;
-        }
-        else {
-            JOptionPane.showMessageDialog(frame, "Input only an interger please.", "Error", JOptionPane.INFORMATION_MESSAGE);
-        }
+        this.tel = tel;
     }
 
     public String getDes() {

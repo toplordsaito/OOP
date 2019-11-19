@@ -5,12 +5,16 @@
  */
 package swing;
 
+import java.nio.charset.*;
+
 /**
  *
  * @author ason
  */
 public class Function {
     public static boolean isAllLetter(String str) {
+        byte[] byteText = str.getBytes(Charset.forName("UTF-8"));
+        str = new String(byteText, Charset.forName("UTF-8"));
         for(int i = 0; i < str.length(); i++) {
             if (!(Character.isLetter(str.charAt(i)))) {
                 return false;

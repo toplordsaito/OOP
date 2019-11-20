@@ -87,6 +87,11 @@
       </Properties>
     </Component>
     <Component class="swing.ProductMenu" name="productMenu1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c5" green="78" red="47" type="rgb"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="HomePanel_productMenu1"/>
       </AuxValues>

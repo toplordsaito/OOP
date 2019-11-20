@@ -57,7 +57,7 @@ public class CategoryDetail extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(71, 120, 197));
         jPanel1.setForeground(new java.awt.Color(0, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -76,10 +76,10 @@ public class CategoryDetail extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Minimum");
 
-        jLabel6.setForeground(new java.awt.Color(102, 255, 255));
+        jLabel6.setForeground(java.awt.Color.orange);
         jLabel6.setText("*เติมสินค้าจะได้ไม่เกินค่า Maximum เสมอ");
 
-        jLabel7.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel7.setForeground(java.awt.Color.orange);
         jLabel7.setText("*เบิกสินค้าจะได้ไม่เกินค่า Minimum เสมอ");
 
         jTextField1.setText("jTextField1");
@@ -95,6 +95,7 @@ public class CategoryDetail extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 153, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/t.png"))); // NOI18N
         jButton1.setText("SAVE");
+        jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -163,13 +164,13 @@ public class CategoryDetail extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
+        productMenu2.setBackground(new java.awt.Color(71, 120, 197));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(productMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(productMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -68,7 +68,7 @@ public class SupplierDetail extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(71, 120, 197));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("sid");
@@ -217,6 +217,8 @@ public class SupplierDetail extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("สินค้า");
+
+        productMenu2.setBackground(new java.awt.Color(71, 120, 197));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

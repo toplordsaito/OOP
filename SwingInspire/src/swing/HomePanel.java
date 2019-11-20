@@ -34,7 +34,9 @@ import javax.swing.JPanel;
  * @author waruwat
  */
 public class HomePanel extends javax.swing.JPanel {
+
     private int cc = 0;
+
     /**
      * Creates new form HomePanel
      */
@@ -66,6 +68,8 @@ public class HomePanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("สินค้าที่ใกล้หมด");
+
+        productMenu1.setBackground(new java.awt.Color(71, 120, 197));
 
         jButton1.setText("Chart");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -143,39 +147,39 @@ public class HomePanel extends javax.swing.JPanel {
             cc += 1;
             if (cc % 2 == 0) {
 
-            PieChart pieChart = new PieChart();
-            for (int i = 0; i < list.size(); i++) {
-                PieChart.Data slice1 = new PieChart.Data(list.get(i).getName(), list.get(i).getCount());
-                pieChart.getData().add(slice1);
+                PieChart pieChart = new PieChart();
+                for (int i = 0; i < list.size(); i++) {
+                    PieChart.Data slice1 = new PieChart.Data(list.get(i).getName(), list.get(i).getCount());
+                    pieChart.getData().add(slice1);
 
+                }
+                StackPane root = new StackPane(pieChart);
+                Scene scene = new Scene(root, 800, 800);
+                fxPanel.setScene(scene);
+                pieChart.setMinSize(700, 700);
+            } else {
+                NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
+                //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
+                lineYAxis.setLabel("Numbers");
+                CategoryAxis lineXAxis = new CategoryAxis();
+                lineXAxis.setLabel("Products");
+                BarChart barChart
+                        = new BarChart<>(lineXAxis, lineYAxis);
+
+                for (int i = 0; i < list.size(); i++) {
+                    XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
+                    series1.setName(list.get(i).getName());
+                    series1.getData().add(new XYChart.Data<String, Number>(list.get(i).getName(), list.get(i).getCount()));
+                    barChart.getData().add(series1);
+                }
+
+                StackPane root = new StackPane(barChart);
+                Scene scene = new Scene(root, 800, 800);
+                fxPanel.setScene(scene);
+                barChart.setMinSize(700, 700);
             }
-            StackPane root = new StackPane(pieChart);
-            Scene scene = new Scene(root, 800, 800);
-            fxPanel.setScene(scene);
-            pieChart.setMinSize(700, 700);
-        } else {
-            NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
-            //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
-            lineYAxis.setLabel("Numbers");
-            CategoryAxis lineXAxis = new CategoryAxis();
-            lineXAxis.setLabel("Products");
-            BarChart barChart
-                    = new BarChart<>(lineXAxis, lineYAxis);
-
-            for (int i = 0; i < list.size(); i++) {
-                XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
-                series1.setName(list.get(i).getName());
-                series1.getData().add(new XYChart.Data<String, Number>(list.get(i).getName(), list.get(i).getCount()));
-                barChart.getData().add(series1);
-            }
-
-            StackPane root = new StackPane(barChart);
-            Scene scene = new Scene(root, 800, 800);
-            fxPanel.setScene(scene);
-            barChart.setMinSize(700, 700);
-        }
         });
-        
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
     private XYChart.Data getData(double x, String y) {

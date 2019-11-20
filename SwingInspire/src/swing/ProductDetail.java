@@ -114,6 +114,7 @@ public class ProductDetail extends javax.swing.JFrame {
         jLabel4.setText("qualtity");
 
         jTextField3.setText("jTextField3");
+        jTextField3.setEnabled(false);
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("category");
@@ -145,6 +146,11 @@ public class ProductDetail extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -304,6 +310,8 @@ public class ProductDetail extends javax.swing.JFrame {
                     + ",'" + jTextArea1.getText()
                     + "')";
             Db_connect.executeSQlQuery(query, "Created");
+            Db_connect.NewLog("CREATE", "1", "0", "create product");
+            
         } else {
             String query = "UPDATE `product` SET `name`='" + jTextField2.getText()
                     + "',`img`='" + new_img
@@ -314,6 +322,8 @@ public class ProductDetail extends javax.swing.JFrame {
                     + ",`des`='" + jTextArea1.getText()
                     + "' WHERE `pid` = " + jTextField1.getText();
             Db_connect.executeSQlQuery(query, "Updated");
+            Db_connect.NewLog("UPDATE", "1", jTextField1.getText(), "update product");
+            System.out.println("5555");
         }
         this.dispose();
 
@@ -323,6 +333,7 @@ public class ProductDetail extends javax.swing.JFrame {
         // TODO add your handling code here:
         String query = "DELETE FROM `product` WHERE pid = " + jTextField1.getText();
         Db_connect.executeSQlQuery(query, "Deleted");
+        Db_connect.NewLog("DELETE", "1", jTextField1.getText(), "delete product");
         this.dispose();
     }//GEN-LAST:event_jButton2MousePressed
 
@@ -335,6 +346,10 @@ public class ProductDetail extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

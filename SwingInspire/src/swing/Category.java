@@ -10,7 +10,8 @@ package swing;
  * @author waruwat
  */
 public class Category {
-    private int cid, product, max, min;
+
+    private int cid, count, max, min;
     private String name;
 
     public int getCid() {
@@ -21,12 +22,12 @@ public class Category {
         this.cid = cid;
     }
 
-    public int getProduct() {
-        return product;
+    public int getCount() {
+        return count;
     }
 
-    public void setProduct(int product) {
-        this.product = product;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public int getMax() {
@@ -52,5 +53,5 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

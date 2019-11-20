@@ -7,8 +7,11 @@ package swing;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +45,7 @@ public class CategoryMenu extends javax.swing.JPanel {
                 c.setName(rs.getString("name"));
                 c.setMax(rs.getInt("max"));
                 c.setMin(rs.getInt("min"));
+                c.setCount(rs.getInt("count"));
                 c_list.add(c);
             }
         } catch (Exception e) {
@@ -50,7 +54,19 @@ public class CategoryMenu extends javax.swing.JPanel {
         return c_list;
     }
 
+    public void updateCountCategery() {
+        try {
+            Connection connection = Db_connect.getConnection();
+            Statement st = connection.createStatement();
+            int rs = st.executeUpdate("update category set `count` = (select count(*) from product where product.cid = category.cid)");
+            System.out.println(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(SupplierMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void Show_Users_In_JTable() {
+        updateCountCategery();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         ArrayList<Category> list = getCategoryList();
@@ -58,13 +74,14 @@ public class CategoryMenu extends javax.swing.JPanel {
         for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getCid();
             row[1] = list.get(i).getName();
-            row[2] = list.get(i).getProduct();
+            row[2] = list.get(i).getCount();
             row[3] = list.get(i).getMax(); //list.get(i).getIcon();
             row[4] = list.get(i).getMin();
             model.addRow(row);
         }
 
     }
+
     public void SetQueryTableSearch(String query) {
         string_query = "SELECT * FROM  `category` where " + query;
         Show_Users_In_JTable();
@@ -175,7 +192,7 @@ public class CategoryMenu extends javax.swing.JPanel {
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
         // TODO add your handling code here:
-        SetQueryTableSearch(" `name` LIKE '%"+ jTextField1.getText() +"%'");
+        SetQueryTableSearch(" `name` LIKE '%" + jTextField1.getText() + "%'");
         //SetQueryTableSearch("`name` LIKE '%"+ jTextField1.getText() +"%' OR `cid` =" + jTextField1.getText());
     }//GEN-LAST:event_jLabel2MousePressed
 

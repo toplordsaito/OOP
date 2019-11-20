@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -63,10 +64,9 @@ public class Db_connect {
         }
     }
 
-    
     public static void ShowIMG(JLabel j, String name, String type) {
         try {
-            String ImagePath = new File(".").getCanonicalPath() + "\\img\\" + type +"\\" + name;
+            String ImagePath = new File(".").getCanonicalPath() + "\\img\\" + type + "\\" + name;
             ImageIcon MyImage = new ImageIcon(ImagePath);
             Image img = MyImage.getImage();
             Image newImg = img.getScaledInstance(j.getWidth(), j.getHeight(), Image.SCALE_SMOOTH);
@@ -76,10 +76,10 @@ public class Db_connect {
             System.out.println("err");
         }
     }
-    
-    public static ImageIcon getIcon(String name, String type){
+
+    public static ImageIcon getIcon(String name, String type) {
         try {
-            String ImagePath = new File(".").getCanonicalPath() + "\\img\\" + type +"\\" + name;
+            String ImagePath = new File(".").getCanonicalPath() + "\\img\\" + type + "\\" + name;
             ImageIcon MyImage = new ImageIcon(ImagePath);
             Image imgz = MyImage.getImage();
             Image newImg = imgz.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
@@ -90,7 +90,8 @@ public class Db_connect {
         }
         return null;
     }
-    public static String BrowImg(String type){
+
+    public static String BrowImg(String type) {
         JFileChooser fileopen = new JFileChooser();
         int ret = fileopen.showDialog(null, "Choose file");
 
@@ -105,23 +106,37 @@ public class Db_connect {
             // Copy file
             String desFile = null;
             try {
-                desFile = new File(".").getCanonicalPath() + "\\img\\" +  type +"\\" + last;
+                desFile = new File(".").getCanonicalPath() + "\\img\\" + type + "\\" + last;
                 System.out.println(new File(".").getCanonicalPath());
                 Files.copy(Paths.get(file), Paths.get(desFile),
                         StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
 //                p.setImg(last);
-               return last;
-     
+                return last;
+
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-            
+
         }
         return "default.jpg";
     }
-    public static void log(String txt){
-        
+
+    public static void NewLog(String type, String editor, String target, String txt) {
+        long time = new Date().getTime();
+        String query = "INSERT INTO `log`(`date`, `string`, `uid`, `target`, `type`) VALUES ('" + time + "','" + txt + "','" + editor + "','" + target + "','" + type + "')";
+        Connection con = new Db_connect().getConnection();
+        Statement st;
+        try {
+            st = con.createStatement();
+            if ((st.executeUpdate(query)) == 1) {
+                // refresh jtable data
+                System.out.println("Log update");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("LOG OK");
     }
 
 }

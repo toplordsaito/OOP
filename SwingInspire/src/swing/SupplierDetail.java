@@ -268,6 +268,7 @@ public class SupplierDetail extends javax.swing.JFrame {
         // TODO add your handling code here:
         String query = "DELETE FROM `supplier` WHERE sid = " + jTextField1.getText();
         Db_connect.executeSQlQuery(query, "Deleted");
+        Db_connect.NewLog("DELETE", "1", jTextField1.getText(), "delete supplier");
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -282,6 +283,7 @@ public class SupplierDetail extends javax.swing.JFrame {
                     + "',`des`='" + jTextArea2.getText()
                     + "' WHERE `sid` = " + jTextField1.getText();
             Db_connect.executeSQlQuery(query, "Updated");
+            Db_connect.NewLog("UPDATE", "1", jTextField1.getText(), "update supplier");
         } else {
             String query = "INSERT INTO `supplier`(`tel`, `img`, `fname`, `lname`, `address`, `des`) VALUES ('"
                     + jTextField4.getText()
@@ -292,6 +294,7 @@ public class SupplierDetail extends javax.swing.JFrame {
                     + "','" + jTextArea2.getText()
                     + "')";
             Db_connect.executeSQlQuery(query, "Created");
+            Db_connect.NewLog("CREATE", "1", "0", "create supplier");
         }
         this.dispose();
 

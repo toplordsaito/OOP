@@ -73,6 +73,11 @@ public class All_Log extends javax.swing.JPanel {
                 "date/time", "editor", "Detail"
             }
         ));
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
@@ -91,6 +96,11 @@ public class All_Log extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+        // TODO add your handling code here:
+        Show_Users_In_JTable();
+    }//GEN-LAST:event_jTable1FocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

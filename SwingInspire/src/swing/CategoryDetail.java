@@ -207,6 +207,7 @@ public class CategoryDetail extends javax.swing.JFrame {
                     + ",`min`=" + jTextField4.getText()
                     + " WHERE `cid` = " + jTextField1.getText();
             Db_connect.executeSQlQuery(query, "Updated");
+            Db_connect.NewLog("UPDATE", "1", jTextField1.getText(), "update category ");
         } else {
             String query = "INSERT INTO `category`(`name`, `max`, `min`) VALUES ('"
                     + jTextField2.getText()
@@ -214,6 +215,7 @@ public class CategoryDetail extends javax.swing.JFrame {
                     + "," + jTextField4.getText()
                     + ")";
             Db_connect.executeSQlQuery(query, "Created");
+            Db_connect.NewLog("CREATE", "1", "0", "create category");
         }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

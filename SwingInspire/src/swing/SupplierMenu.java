@@ -7,8 +7,11 @@ package swing;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
@@ -47,15 +50,14 @@ public class SupplierMenu extends javax.swing.JPanel {
     public ArrayList<Supplier> getSupplierList() {
         ArrayList<Supplier> s_list = new ArrayList<Supplier>();
         Connection connection = Db_connect.getConnection();
-        Connection connection1 = Db_connect.getConnection();
-        Statement st, st1;
-        ResultSet rs, rs1;
+        Statement st;
+        ResultSet rs;
         int count;
         try {
             st = connection.createStatement();
             rs = st.executeQuery(string_query);
             Supplier s;
-         
+
             while (rs.next()) {
                 s = new Supplier();
                 s.setSid(rs.getInt("sid"));
@@ -65,7 +67,7 @@ public class SupplierMenu extends javax.swing.JPanel {
                 s.setAddress(rs.getString("address"));
                 s.setDes(rs.getString("des"));
                 s.setTel(rs.getString("tel"));
-                s.setCount(12);
+                s.setCount(rs.getInt("count"));
                 s_list.add(s);
             }
         } catch (Exception e) {
@@ -74,7 +76,18 @@ public class SupplierMenu extends javax.swing.JPanel {
         return s_list;
     }
 
+    public void updateCountSupplier() {
+        try {
+            Connection connection = Db_connect.getConnection();
+            Statement st = connection.createStatement();
+            int rs = st.executeUpdate("update supplier set `count` = (select count(*) from product where product.sid = supplier.sid)");
+        } catch (SQLException ex) {
+            Logger.getLogger(SupplierMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void Show_Users_In_JTable() {
+        updateCountSupplier();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         ArrayList<Supplier> list = getSupplierList();

@@ -36,6 +36,9 @@ import javax.swing.JPanel;
 public class HomePanel extends javax.swing.JPanel {
 
     private int cc = 0;
+    private JFXPanel fxPanel;
+    ProductMenu obj = new ProductMenu();
+    ArrayList<Product> list = obj.getProductList();
 
     /**
      * Creates new form HomePanel
@@ -116,9 +119,9 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ProductMenu obj = new ProductMenu();
-        ArrayList<Product> list = obj.getProductList();
-        JFXPanel fxPanel;
+       
+        
+        
         JPanel mainPanel = new JPanel(new BorderLayout());
         fxPanel = new JFXPanel();
         mainPanel.add(fxPanel, BorderLayout.CENTER);
@@ -142,10 +145,19 @@ public class HomePanel extends javax.swing.JPanel {
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         framePie.setSize(900, 800);
         framePie.setMinimumSize(new Dimension(800, 800));
+        ShowChart();
         b1.addActionListener((java.awt.event.ActionEvent evt1) -> {
-            System.out.println("swing.HomePanel.jButton1ActionPerformed()");
             cc += 1;
-            if (cc % 2 == 0) {
+            ShowChart();
+            
+        });
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ShowChart() {
+         
+        
+        if (cc % 2 == 0) {
 
                 PieChart pieChart = new PieChart();
                 for (int i = 0; i < list.size(); i++) {
@@ -178,15 +190,7 @@ public class HomePanel extends javax.swing.JPanel {
                 fxPanel.setScene(scene);
                 barChart.setMinSize(700, 700);
             }
-        });
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-    private XYChart.Data getData(double x, String y) {
-        XYChart.Data data = new XYChart.Data<>();
-        data.setYValue(x);
-        data.setXValue(y);
-        return data;
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

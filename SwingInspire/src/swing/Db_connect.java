@@ -120,6 +120,8 @@ public class Db_connect {
         }
         return "default.jpg";
     }
-    
+    public static void log(String txt){
+        
+    }
 
 }

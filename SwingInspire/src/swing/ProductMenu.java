@@ -10,7 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
+import java.awt.*;
 
 /**
  *
@@ -31,9 +32,8 @@ public class ProductMenu extends javax.swing.JPanel {
         ) {
             @Override
             public Class<?> getColumnClass(int column) {
-                if (column == 3) {
-                    return JProgressBar.class;
-                } else if (column == 1) {
+
+                if (column == 1) {
                     return ImageIcon.class;
                 } else {
                     return Object.class;
@@ -41,13 +41,25 @@ public class ProductMenu extends javax.swing.JPanel {
             }
         }
         );
-        //init
+        jTable1.getColumn("qualtity").setCellRenderer(new ProgressCellRenderer());
 
+        //init
         Show_Users_In_JTable();
     }
-    
-    public void SetQueryTable(String query){
-        string_query = "SELECT * FROM  `product`" + query;
+
+    public void SetQueryTable(String query) {
+        string_query_fix = "SELECT * FROM  `product` " + query;
+        string_query = string_query_fix;
+        Show_Users_In_JTable();
+    }
+
+    public void SetQueryTableSearch(String query) {
+        if (string_query_fix.equals("SELECT * FROM  `product` ")) {
+            string_query = string_query_fix + "where " + query;
+        } else {
+            string_query = string_query_fix + " AND " + query;
+        }
+        System.out.println(string_query);
         Show_Users_In_JTable();
     }
 
@@ -57,7 +69,7 @@ public class ProductMenu extends javax.swing.JPanel {
 
         Statement st;
         ResultSet rs;
-
+        int count = 0;
         try {
             st = connection.createStatement();
             rs = st.executeQuery(string_query);
@@ -73,10 +85,12 @@ public class ProductMenu extends javax.swing.JPanel {
                 p.setCid(rs.getInt("cid"));
                 p.setSid(rs.getInt("sid"));
                 p_list.add(p);
+                count++;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        jLabel3.setText(count + " ผลลัพธ์");
         return p_list;
     }
 
@@ -89,7 +103,7 @@ public class ProductMenu extends javax.swing.JPanel {
             row[0] = list.get(i).getPid();
             row[1] = Db_connect.getIcon(list.get(i).getImg(), "product");
             row[2] = list.get(i).getName();
-            row[3] = new JProgressBar(); //list.get(i).getCount(); //list.get(i).getIcon();
+            row[3] = list.get(i).getCount(); //list.get(i).getIcon();
             model.addRow(row);
         }
 
@@ -106,6 +120,12 @@ public class ProductMenu extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(51, 102, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,15 +149,53 @@ public class ProductMenu extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("สินค้าต่างๆ");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_Search_18px.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("83 ผลลัพธ์");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(13, 13, 13))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,10 +211,69 @@ public class ProductMenu extends javax.swing.JPanel {
         new ProductDetail(p);
     }//GEN-LAST:event_jTable1MousePressed
 
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        // TODO add your handling code here:
+        SetQueryTableSearch(" `name` LIKE '%" + jTextField1.getText() + "%'");
+        // SetQueryTableSearch(" `pid` = "+ jTextField1.getText() + "");
+        //SetQueryTableSearch("`name` LIKE '%"+ jTextField1.getText() +"%' OR `pid` =" + jTextField1.getText());
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
     private String string_query = "SELECT * FROM  `product` ";
+    private String string_query_fix = "SELECT * FROM  `product` ";
+}
+
+class ProgressCellRenderer extends javax.swing.JProgressBar implements TableCellRenderer {
+
+    ProgressCellRenderer() {
+        // Initialize the progress bar renderer to use a horizontal
+        // progress bar.
+
+        //super(JProgressBar.HORIZONTAL);
+
+        // Ensure that the progress bar border is not painted. (The
+        // result is ugly when it appears in a table cell.)
+        setBorderPainted(false);
+
+        // Ensure that percentage text is painted on the progress bar.
+        setStringPainted(true);
+    }
+
+    public Component getTableCellRendererComponent(JTable table,
+            Object value,
+            boolean isSelected,
+            boolean hasFocus,
+            int row,
+            int col) {
+        if (value instanceof Integer) {
+            // Ensure that the nonselected background portion of a
+            // progress bar is assigned the same color as the table's 
+            // background color. The resulting progress bar fits more
+            // naturally (from a visual perspective) into the overall 
+            // table's appearance.
+
+            //setBackground(table.getBackground());
+
+            // Save the current progress bar value for subsequent
+            // rendering. That value is converted from [0, 40] to 
+            // [0, 100].
+            int i = ((Integer) value).intValue();
+            setValue(i);
+        }
+
+        return this;
+    }
 }

@@ -34,7 +34,7 @@ import javax.swing.JPanel;
  * @author waruwat
  */
 public class HomePanel extends javax.swing.JPanel {
-    Chart_product chart;
+    Chart_Category chart;
 
     
 
@@ -117,7 +117,7 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       chart = new Chart_product();
+       chart = new Chart_Category();
        chart.init();
         
         

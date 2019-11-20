@@ -20,29 +20,30 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.StackPane;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author FallenDown
  */
-
-public class Chart_product extends JFrame{
+public class Chart_Supplier extends JFrame{
     private int cc = 1;
     private JFXPanel fxPanel;
     private JButton b1;
-    ProductMenu obj = new ProductMenu();
-    ArrayList<Product> list = obj.getProductList();
-    private int red = 200;
-    private int green = 200;
-    private int blue = 200;
-    
+    SupplierMenu obj = new SupplierMenu();
+    ArrayList<Supplier> list = obj.getSupplierList();
+    private final int red = 200;
+    private final int green = 200;
+    private final int blue = 200;
     public void init(){
         JPanel mainPanel = new JPanel(new BorderLayout());
         fxPanel = new JFXPanel();
         mainPanel.add(fxPanel, BorderLayout.CENTER);
         b1 = new JButton("Change Chart");
-        JLabel titleLabel = new JLabel("Products");
+        JLabel titleLabel = new JLabel("Supplier");
         titleLabel.setFont(new Font("Courier", Font.BOLD, 30));
         JPanel p = new JPanel(new GridLayout(1, 5));
         p.add(new JLabel(""));
@@ -74,7 +75,7 @@ public class Chart_product extends JFrame{
 
                 PieChart pieChart = new PieChart();
                 for (int i = 0; i < list.size(); i++) {
-                    PieChart.Data slice1 = new PieChart.Data(list.get(i).getName(), list.get(i).getCount());
+                    PieChart.Data slice1 = new PieChart.Data(list.get(i).getFname()+" "+list.get(i).getLname(), list.get(i).getCount());
                     pieChart.getData().add(slice1);
 
                 }
@@ -83,18 +84,18 @@ public class Chart_product extends JFrame{
                 fxPanel.setScene(scene);
                 pieChart.setMinSize(700, 700);
             } else {
-                NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
+                NumberAxis lineYAxis = new NumberAxis(0, 20, 1);
                 //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
                 lineYAxis.setLabel("Numbers");
                 CategoryAxis lineXAxis = new CategoryAxis();
-                lineXAxis.setLabel("Products");
+                lineXAxis.setLabel("Category");
                 StackedBarChart barChart
                         = new StackedBarChart<>(lineXAxis, lineYAxis);
 
                 for (int i = 0; i < list.size(); i++) {
-                    XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
-                    series1.setName(list.get(i).getName());
-                    series1.getData().add(new XYChart.Data<String, Number>(list.get(i).getName(), list.get(i).getCount()));
+                    XYChart.Series<String, Number> series1 = new XYChart.Series();
+                    series1.setName(list.get(i).getFname()+" "+list.get(i).getLname());
+                    series1.getData().add(new XYChart.Data(list.get(i).getFname()+" "+list.get(i).getLname(), list.get(i).getCount()));
                     barChart.getData().add(series1);
                 }
 
@@ -107,7 +108,7 @@ public class Chart_product extends JFrame{
     }
     public static void main(String[] args) {
 
-        new Chart_product().init();
+        new Chart_Supplier().init();
 
     }
 }

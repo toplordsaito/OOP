@@ -34,11 +34,9 @@ import javax.swing.JPanel;
  * @author waruwat
  */
 public class HomePanel extends javax.swing.JPanel {
+    Chart_product chart;
 
-    private int cc = 1;
-    private JFXPanel fxPanel;
-    ProductMenu obj = new ProductMenu();
-    ArrayList<Product> list = obj.getProductList();
+    
 
     /**
      * Creates new form HomePanel
@@ -119,79 +117,17 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
+       chart = new Chart_product();
+       chart.init();
         
         
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        fxPanel = new JFXPanel();
-        mainPanel.add(fxPanel, BorderLayout.CENTER);
-        JButton b1 = new JButton("Change Chart");
-        JLabel titleLabel = new JLabel("All Sales");
-        titleLabel.setFont(new Font("Courier", Font.BOLD, 30));
-        JPanel p = new JPanel(new GridLayout(1, 5));
-        p.add(new JLabel(""));
-        p.add(new JLabel(""));
-        titleLabel.setForeground(Color.white);
-        p.setBackground(Color.darkGray);
-        p.add(titleLabel);
-        p.add(new JLabel(""));
-        p.add(b1);
-        mainPanel.add(p, BorderLayout.NORTH);
-        b1.setBackground(Color.darkGray);
-        JFrame framePie = new JFrame();
-        framePie.add(mainPanel);
-        framePie.setVisible(true);
-        framePie.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        titleLabel.setHorizontalAlignment(JLabel.CENTER);
-        framePie.setSize(900, 800);
-        framePie.setMinimumSize(new Dimension(800, 800));
-        ShowChart();
-        b1.addActionListener((java.awt.event.ActionEvent evt1) -> {
-            cc += 1;
-            ShowChart();
+        
             
-        });
+      
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
-    private void ShowChart() {
-         
-        
-        if (cc % 2 == 0) {
-
-                PieChart pieChart = new PieChart();
-                for (int i = 0; i < list.size(); i++) {
-                    PieChart.Data slice1 = new PieChart.Data(list.get(i).getName(), list.get(i).getCount());
-                    pieChart.getData().add(slice1);
-
-                }
-                StackPane root = new StackPane(pieChart);
-                Scene scene = new Scene(root, 800, 800);
-                fxPanel.setScene(scene);
-                pieChart.setMinSize(700, 700);
-            } else {
-                NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
-                //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
-                lineYAxis.setLabel("Numbers");
-                CategoryAxis lineXAxis = new CategoryAxis();
-                lineXAxis.setLabel("Products");
-                BarChart barChart
-                        = new BarChart<>(lineXAxis, lineYAxis);
-
-                for (int i = 0; i < list.size(); i++) {
-                    XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
-                    series1.setName(list.get(i).getName());
-                    series1.getData().add(new XYChart.Data<String, Number>(list.get(i).getName(), list.get(i).getCount()));
-                    barChart.getData().add(series1);
-                }
-
-                StackPane root = new StackPane(barChart);
-                Scene scene = new Scene(root, 800, 800);
-                fxPanel.setScene(scene);
-                barChart.setMinSize(700, 700);
-            }
-        
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

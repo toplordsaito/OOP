@@ -35,7 +35,7 @@ import javax.swing.JPanel;
  */
 public class HomePanel extends javax.swing.JPanel {
 
-    private int cc = 0;
+    private int cc = 1;
     private JFXPanel fxPanel;
     ProductMenu obj = new ProductMenu();
     ArrayList<Product> list = obj.getProductList();

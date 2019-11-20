@@ -21,7 +21,7 @@ public class CategoryDetail extends javax.swing.JFrame {
     public CategoryDetail(Category c) {
         initComponents();
         this.c = c;
-        productMenu1.SetQueryTable("WHERE cid ='" + c.getCid() + "'");
+        productMenu2.SetQueryTable("WHERE cid ='" + c.getCid() + "'");
         jTextField1.setText("" + c.getCid());
         jTextField2.setText(c.getName());
         jTextField3.setText(c.getMax() + "");
@@ -52,12 +52,12 @@ public class CategoryDetail extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        productMenu1 = new swing.ProductMenu();
+        productMenu2 = new swing.ProductMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(71, 120, 197));
         jPanel1.setForeground(new java.awt.Color(0, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -76,10 +76,10 @@ public class CategoryDetail extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Minimum");
 
-        jLabel6.setForeground(new java.awt.Color(102, 255, 255));
+        jLabel6.setForeground(java.awt.Color.orange);
         jLabel6.setText("*เติมสินค้าจะได้ไม่เกินค่า Maximum เสมอ");
 
-        jLabel7.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel7.setForeground(java.awt.Color.orange);
         jLabel7.setText("*เบิกสินค้าจะได้ไม่เกินค่า Minimum เสมอ");
 
         jTextField1.setText("jTextField1");
@@ -95,6 +95,7 @@ public class CategoryDetail extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 153, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/t.png"))); // NOI18N
         jButton1.setText("SAVE");
+        jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -163,19 +164,19 @@ public class CategoryDetail extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        productMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        productMenu2.setBackground(new java.awt.Color(71, 120, 197));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(productMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(productMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(productMenu1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(productMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,7 +268,7 @@ public class CategoryDetail extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private swing.ProductMenu productMenu1;
+    private swing.ProductMenu productMenu2;
     // End of variables declaration//GEN-END:variables
     private Category c;
 }

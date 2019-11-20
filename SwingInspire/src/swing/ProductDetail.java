@@ -97,7 +97,7 @@ public class ProductDetail extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(71, 120, 197));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("pid");

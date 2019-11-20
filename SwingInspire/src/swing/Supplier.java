@@ -10,13 +10,21 @@ package swing;
  * @author waruwat
  */
 public class Supplier {
-    private int sid;
+    private int sid, count;
     private String fname, lname, address, tel, des;
     private String img = "default.png";
     public int getSid() {
         return sid;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+    
     public void setSid(int sid) {
         this.sid = sid;
     }

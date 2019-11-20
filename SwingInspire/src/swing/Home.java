@@ -31,6 +31,7 @@ public class Home extends javax.swing.JFrame {
         p_menu = new ProductMenu();
         s_menu = new SupplierMenu();
         log_menu = new All_Log();
+        sale = new Sale();
         setHomePage(home);
         setVisible(true);
     }
@@ -68,6 +69,9 @@ public class Home extends javax.swing.JFrame {
         btn_5 = new javax.swing.JPanel();
         ind_5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        btn_6 = new javax.swing.JPanel();
+        ind_6 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         jPanel3 = new javax.swing.JPanel();
@@ -341,7 +345,55 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        side_pane.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, -1));
+        side_pane.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, -1));
+
+        btn_6.setBackground(new java.awt.Color(23, 35, 51));
+        btn_6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_6MouseReleased(evt);
+            }
+        });
+
+        ind_6.setOpaque(false);
+        ind_6.setPreferredSize(new java.awt.Dimension(3, 43));
+
+        javax.swing.GroupLayout ind_6Layout = new javax.swing.GroupLayout(ind_6);
+        ind_6.setLayout(ind_6Layout);
+        ind_6Layout.setHorizontalGroup(
+            ind_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        ind_6Layout.setVerticalGroup(
+            ind_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+        );
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Sales");
+
+        javax.swing.GroupLayout btn_6Layout = new javax.swing.GroupLayout(btn_6);
+        btn_6.setLayout(btn_6Layout);
+        btn_6Layout.setHorizontalGroup(
+            btn_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_6Layout.createSequentialGroup()
+                .addComponent(ind_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel17)
+                .addGap(0, 56, Short.MAX_VALUE))
+        );
+        btn_6Layout.setVerticalGroup(
+            btn_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_6Layout.createSequentialGroup()
+                .addComponent(ind_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(btn_6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        side_pane.add(btn_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, -1));
 
         getContentPane().add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 590));
 
@@ -651,6 +703,14 @@ public class Home extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
+    private void btn_6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_6MouseReleased
+        // TODO add your handling code here:
+        resetColor();
+        ind_6.setOpaque(true);
+        setColor(btn_6);
+        setHomePage(sale);
+    }//GEN-LAST:event_btn_6MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -691,8 +751,8 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void resetColor() {
-        JPanel[] pane = new JPanel[]{btn_2, btn_3, btn_4, btn_1, btn_5};
-        JPanel[] indicators = new JPanel[]{ind_2, ind_3, ind_4, ind_1, ind_5};
+        JPanel[] pane = new JPanel[]{btn_2, btn_3, btn_4, btn_1, btn_5, btn_6};
+        JPanel[] indicators = new JPanel[]{ind_2, ind_3, ind_4, ind_1, ind_5, ind_6};
         for (int i = 0; i < pane.length; i++) {
             pane[i].setBackground(new Color(23, 35, 51));
 
@@ -710,12 +770,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btn_3;
     private javax.swing.JPanel btn_4;
     private javax.swing.JPanel btn_5;
+    private javax.swing.JPanel btn_6;
     private javax.swing.JLabel btn_exit;
     private javax.swing.JPanel ind_1;
     private javax.swing.JPanel ind_2;
     private javax.swing.JPanel ind_3;
     private javax.swing.JPanel ind_4;
     private javax.swing.JPanel ind_5;
+    private javax.swing.JPanel ind_6;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -725,6 +787,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -752,4 +815,5 @@ public class Home extends javax.swing.JFrame {
     private ProductMenu p_menu;
     private SupplierMenu s_menu;
     private All_Log log_menu;
+    private Sale sale;
 }

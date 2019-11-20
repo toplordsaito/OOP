@@ -60,9 +60,10 @@ public class Chart_Category extends JFrame{
         b1.setBackground(myColor);
         b1.setForeground(Color.black);
         add(mainPanel);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
+        setVisible(true);
         setSize(900, 800);
         setMinimumSize(new Dimension(800, 800));
         ShowChart();

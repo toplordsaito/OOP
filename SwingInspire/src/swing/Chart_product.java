@@ -58,7 +58,7 @@ public class Chart_product extends JFrame{
         b1.setForeground(Color.black);
         add(mainPanel);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         setSize(900, 800);
         setMinimumSize(new Dimension(800, 800));

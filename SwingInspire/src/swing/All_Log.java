@@ -65,12 +65,16 @@ public class All_Log extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "date/time", "editor", "Detail"
+                "Date/Time", "Editor", "Detail"
             }
         ));
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {

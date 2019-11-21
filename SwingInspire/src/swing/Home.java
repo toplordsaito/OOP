@@ -128,7 +128,7 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 43, Short.MAX_VALUE)
         );
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Home");
 
@@ -176,7 +176,7 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 43, Short.MAX_VALUE)
         );
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Supplier");
 
@@ -188,7 +188,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(ind_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel9)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         btn_2Layout.setVerticalGroup(
             btn_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +224,7 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 43, Short.MAX_VALUE)
         );
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Product");
 
@@ -272,7 +272,7 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 43, Short.MAX_VALUE)
         );
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Cagetory");
 
@@ -284,7 +284,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(ind_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel11)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
         btn_4Layout.setVerticalGroup(
             btn_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,6 +300,7 @@ public class Home extends javax.swing.JFrame {
         side_pane.add(btn_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, -1));
 
         btn_5.setBackground(new java.awt.Color(23, 35, 51));
+        btn_5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_5MousePressed(evt);
@@ -348,6 +349,7 @@ public class Home extends javax.swing.JFrame {
         side_pane.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, -1));
 
         btn_6.setBackground(new java.awt.Color(23, 35, 51));
+        btn_6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btn_6MouseReleased(evt);
@@ -530,7 +532,7 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/imge_1.jpg"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 86, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Admin");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 30));
@@ -559,18 +561,19 @@ public class Home extends javax.swing.JFrame {
 
         jProgressBar5.setValue(30);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Log");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                        .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -600,7 +603,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,6 +621,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 300, 540));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel6.setLayout(new java.awt.CardLayout());
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 650, 540));
 

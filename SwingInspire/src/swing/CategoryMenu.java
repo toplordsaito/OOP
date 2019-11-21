@@ -104,6 +104,8 @@ public class CategoryMenu extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(71, 120, 197));
 
+        jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setForeground(new java.awt.Color(51, 51, 51));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -111,10 +113,9 @@ public class CategoryMenu extends javax.swing.JPanel {
                 {"asd", "asd", "asd", "asd", null}
             },
             new String [] {
-                "Cid", "Name", "Product", "Max", "Min"
+                "CID", "Name", "Product", "Max", "Min"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(60);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

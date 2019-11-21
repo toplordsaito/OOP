@@ -64,31 +64,41 @@ public class CategoryDetail extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("สินค้าในหมวด . . .");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cid");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("name");
+        jLabel3.setText("Name");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Maximum");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Minimum");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(java.awt.Color.orange);
         jLabel6.setText("*เติมสินค้าจะได้ไม่เกินค่า Maximum เสมอ");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(java.awt.Color.orange);
         jLabel7.setText("*เบิกสินค้าจะได้ไม่เกินค่า Minimum เสมอ");
 
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.setText("jTextField1");
         jTextField1.setEnabled(false);
 
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField2.setText("jTextField2");
 
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField3.setText("jTextField3");
 
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField4.setText("jTextField4");
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
@@ -164,7 +174,7 @@ public class CategoryDetail extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        productMenu2.setBackground(new java.awt.Color(71, 120, 197));
+        productMenu2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

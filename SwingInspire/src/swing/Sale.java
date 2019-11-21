@@ -33,8 +33,12 @@ public class Sale extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        salesTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("jButton1");
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("jButton2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -127,15 +127,17 @@ public class ProductMenu extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(71, 120, 197));
 
+        jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Photo", "Name", "Qualtity"
+                "ID", "Photo", "Name", "Qualtity"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(60);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -150,6 +152,7 @@ public class ProductMenu extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jTextField1.setBackground(new java.awt.Color(123, 156, 225));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -167,6 +170,7 @@ public class ProductMenu extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("83 ผลลัพธ์");
 

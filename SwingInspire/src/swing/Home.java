@@ -672,18 +672,18 @@ public class Home extends javax.swing.JFrame {
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
 
-        new Chart_product().init();
+        new CategoryDetail();
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void jLabel15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MousePressed
         // TODO add your handling code here:
-        new Chart_Category().init();
+        new ProductDetail();
     }//GEN-LAST:event_jLabel15MousePressed
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         // TODO add your handling code here:
 
-        new Chart_Supplier().init();
+        new SupplierDetail();
     }//GEN-LAST:event_jLabel3MousePressed
 
     private void btn_5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_5MousePressed

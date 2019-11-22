@@ -33,6 +33,9 @@ public class Product {
     public void setCount(int count) {
         this.count = count;
     }
+    public void setCount(String count) {
+        this.count = Integer.parseInt(count);
+    }
 
     public int getPrice() {
         return price;
@@ -40,6 +43,9 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+    public void setPrice(String price) {
+        this.price = Integer.parseInt(price);
     }
 
     public int getCid() {
@@ -49,6 +55,9 @@ public class Product {
     public void setCid(int cid) {
         this.cid = cid;
     }
+    public void setCid(String cid) {
+        this.cid = Integer.parseInt(cid);
+    }
 
     public int getSid() {
         return sid;
@@ -56,6 +65,9 @@ public class Product {
 
     public void setSid(int sid) {
         this.sid = sid;
+    }
+    public void setSid(String sid) {
+        this.sid = Integer.parseInt(sid);
     }
 
     public String getName() {

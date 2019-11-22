@@ -14,8 +14,13 @@ public class deposit_withdraw extends javax.swing.JFrame {
     /**
      * Creates new form deposit_withdraw
      */
-    public deposit_withdraw() {
+    public deposit_withdraw(Product p) {
+
         initComponents();
+        setVisible(true);
+        this.p = p;
+        jLabel3.setText(p.getName());
+        jLabel5.setText(p.getCount() + "");
     }
 
     /**
@@ -38,7 +43,7 @@ public class deposit_withdraw extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -63,10 +68,14 @@ public class deposit_withdraw extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setText("jTextField1");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("เบิก");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,6 +83,11 @@ public class deposit_withdraw extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("ฝาก");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,6 +155,35 @@ public class deposit_withdraw extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int val = Integer.parseInt(jTextField1.getText());
+        int ans;
+        if (p.getCount() - val >= 0) {
+            ans = p.getCount() - val;
+        } else {
+            return;
+        }
+        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=1";
+        Db_connect.executeSQlQuery(query, "Withdrawed");
+        Db_connect.NewLog("WITHDRAW", "1", p.getPid() + "", "withdraw " + val + " หน่วย จาก " + p.getPid());
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int val = Integer.parseInt(jTextField1.getText());
+        int ans;
+        if (p.getCount() + val <= 100) {
+            ans = p.getCount() + val;
+        } else {
+            return;
+        }
+        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=1";
+        Db_connect.executeSQlQuery(query, "Deposited");
+        Db_connect.NewLog("DEPOSIT", "1", p.getPid() + "", "deposit " + jTextField1.getText() + " หน่วย จาก " + p.getPid());
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,7 +214,7 @@ public class deposit_withdraw extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new deposit_withdraw().setVisible(true);
+                //new deposit_withdraw().setVisible(true);
             }
         });
     }
@@ -188,4 +231,5 @@ public class deposit_withdraw extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    private Product p;
 }

@@ -24,6 +24,8 @@ public class ProductDetail extends javax.swing.JFrame {
      */
     public ProductDetail() {
         this(new Product());
+        jButton4.setVisible(false);
+        jTextField3.setEnabled(true);
     }
 
     public ProductDetail(Product p) {
@@ -72,6 +74,7 @@ public class ProductDetail extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,6 +190,13 @@ public class ProductDetail extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("เบิก/ถอน");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -213,7 +223,9 @@ public class ProductDetail extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3))
+                                .addComponent(jTextField3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,7 +256,8 @@ public class ProductDetail extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -313,28 +326,34 @@ public class ProductDetail extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        p.setName(jTextField2.getText());
+        p.setSid(jTextField5.getText());
+        p.setCid(jTextField4.getText());
+        p.setPrice(jTextField6.getText());
+        p.setDes(jTextArea1.getText());
         if (p.getPid() == 0) {
-            String query = "INSERT INTO `product`(`name`, `img`, `count`, `sid`, `cid`, `price`, `des`) VALUES ('" 
+            p.setCount(jTextField3.getText());
+            String query = "INSERT INTO `product`(`name`, `img`, `sid`, `cid`, `price`, `des`,`count`) VALUES ('"
                     + jTextField2.getText()
                     + "','" + new_img
-                    + "'," + jTextField3.getText()
-                    + "," + jTextField5.getText()
+                    + "'," + jTextField5.getText()
                     + "," + jTextField4.getText()
                     + "," + jTextField6.getText()
                     + ",'" + jTextArea1.getText()
-                    + "')";
+                    + "'," + jTextField3.getText()
+                    + ")";
+            System.out.println(query);
             Db_connect.executeSQlQuery(query, "Created");
             Db_connect.NewLog("CREATE", "1", "0", "create product");
-            
+
         } else {
-            String query = "UPDATE `product` SET `name`='" + jTextField2.getText()
+            String query = "UPDATE `product` SET `name`='" + p.getName()
                     + "',`img`='" + new_img
-                    + "',`count`=" + jTextField3.getText()
-                    + ",`cid`=" + jTextField4.getText()
-                    + ",`sid`=" + jTextField5.getText()
-                    + ",`price`=" + jTextField6.getText()
-                    + ",`des`='" + jTextArea1.getText()
-                    + "' WHERE `pid` = " + jTextField1.getText();
+                    + "',`cid`=" + p.getCid()
+                    + ",`sid`=" + p.getSid()
+                    + ",`price`=" + p.getPrice()
+                    + ",`des`='" + p.getDes()
+                    + "' WHERE `pid` = " + p.getPid();
             Db_connect.executeSQlQuery(query, "Updated");
             Db_connect.NewLog("UPDATE", "1", jTextField1.getText(), "update product");
             System.out.println("5555");
@@ -364,6 +383,12 @@ public class ProductDetail extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new deposit_withdraw(p);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,6 +429,7 @@ public class ProductDetail extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

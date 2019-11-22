@@ -117,6 +117,7 @@ public class CategoryMenu extends javax.swing.JPanel {
                 "CID", "Name", "Product", "Max", "Min"
             }
         ));
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(60);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

@@ -78,6 +78,7 @@ public class Home extends javax.swing.JFrame {
         btn_5 = new javax.swing.JPanel();
         ind_5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         btn_exit = new javax.swing.JLabel();
@@ -364,6 +365,9 @@ public class Home extends javax.swing.JFrame {
         );
 
         side_pane.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/ason/Desktop/OOP/SwingInspire/img/icon/logo_r.png")); // NOI18N
+        side_pane.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
 
         getContentPane().add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 590));
 
@@ -715,7 +719,7 @@ public class Home extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -966,6 +970,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;

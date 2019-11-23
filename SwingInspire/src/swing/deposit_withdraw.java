@@ -131,6 +131,13 @@ public class deposit_withdraw extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(53, 53, 53))
+>>>>>>> c05649c274ebe1bd0fdd21c3bece6ca8dbdd58b6
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -189,9 +196,13 @@ public class deposit_withdraw extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
+<<<<<<< HEAD
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addContainerGap(67, Short.MAX_VALUE))
+>>>>>>> c05649c274ebe1bd0fdd21c3bece6ca8dbdd58b6
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,8 +232,16 @@ public class deposit_withdraw extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "VALUE OVER THAN MIN");
             return;
         }
+<<<<<<< HEAD
 
         
+=======
+        
+        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid="+p.getPid();
+        Db_connect.executeSQlQuery(query, "Withdrawed");
+        Db_connect.NewLog("WITHDRAW", "1", p.getPid() + "", "withdraw " + val + " unit form " + p.getPid());
+        this.dispose();
+>>>>>>> c05649c274ebe1bd0fdd21c3bece6ca8dbdd58b6
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -239,7 +258,15 @@ public class deposit_withdraw extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "VALUE OVER THAN MAX");
             return;
         }
+<<<<<<< HEAD
 
+=======
+        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid="+p.getPid();
+        System.out.println("ns="+ans);
+        Db_connect.executeSQlQuery(query, "Deposited");
+        Db_connect.NewLog("DEPOSIT", "1", p.getPid() + "", "deposit " + jTextField1.getText() + " unit from " + p.getPid());
+        this.dispose();
+>>>>>>> c05649c274ebe1bd0fdd21c3bece6ca8dbdd58b6
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

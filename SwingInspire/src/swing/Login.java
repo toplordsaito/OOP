@@ -173,7 +173,11 @@ public class Login extends javax.swing.JFrame {
 
             if ((rec != null) && (rec.next())) {
                 System.out.println("Login Success");
-                Home home = new Home();
+                User u = new User();
+                u.setName(rec.getString("fname"));
+                u.setImg(rec.getString("img"));
+                u.setRole(rec.getString("role"));
+                Home home = new Home(u);
                 this.dispose();
 
             } else {

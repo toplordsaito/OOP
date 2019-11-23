@@ -61,7 +61,7 @@ public class HomePanel extends javax.swing.JPanel {
         productMenu1 = new swing.ProductMenu();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(106, 192, 238));
+        setBackground(new java.awt.Color(159, 210, 237));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 60)); // NOI18N
         jLabel1.setText("Welcome!");

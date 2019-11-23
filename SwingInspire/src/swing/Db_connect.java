@@ -37,7 +37,7 @@ public class Db_connect {
     public static Connection getConnection() {
         Connection con;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://192.168.99.100:3306/oop", "root", "keep1234");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/oop", "root", "ason12345");
             return con;
         } catch (Exception e) {
             e.printStackTrace();

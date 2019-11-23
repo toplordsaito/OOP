@@ -38,7 +38,7 @@ import java.util.Map;
  */
 public class Chart_withdraw extends JFrame {
 
-    private int cc = 2;
+    private int cc = 1;
     private JFXPanel fxPanel;
     private JButton b1;
     private String string_query = "SELECT * FROM  `log` ";
@@ -62,10 +62,7 @@ public class Chart_withdraw extends JFrame {
             while (rs.next()) {
                 //double date, int uid, int target, String string, String type
                 l = new log(new Timestamp(Long.parseLong(rs.getString("date"))), rs.getInt("uid"), rs.getInt("target"), rs.getString("string"), rs.getString("type"));
-                String sql = "SELECT  `name` FROM `product` WHERE `pid` =" + l.getTarget();
-                ResultSet rec = st.executeQuery(sql);
-                rec.next();
-                name = rec.getString("name");
+                
 
                 if ("WITHDRAW".equals(l.getType())) {
 
@@ -85,7 +82,7 @@ public class Chart_withdraw extends JFrame {
         fxPanel = new JFXPanel();
         mainPanel.add(fxPanel, BorderLayout.CENTER);
         b1 = new JButton("Change Chart");
-        JLabel titleLabel = new JLabel("Products");
+        JLabel titleLabel = new JLabel("WithDraw");
         titleLabel.setFont(new Font("Courier", Font.BOLD, 30));
         JPanel p = new JPanel(new GridLayout(1, 5));
         p.add(new JLabel(""));
@@ -123,7 +120,6 @@ public class Chart_withdraw extends JFrame {
                 System.out.println(number[1]);
                 Connection connection = Db_connect.getConnection();
                 Statement st;
-                ResultSet rs;
                 try {
                     st = connection.createStatement();
                     String sql = "SELECT  `name` FROM `product` WHERE `pid` =" + w_list.get(i).getTarget();

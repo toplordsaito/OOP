@@ -7,6 +7,7 @@ package swing;
 
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -919,15 +920,35 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+
     public void updateCountSupplier() {
+        Connection connection = null;
+        Statement st = null;
         try {
-            Connection connection = Db_connect.getConnection();
-            Statement st = connection.createStatement();
-            int rs = st.executeUpdate("UPDATE `global` SET `low`=(select count(*) FROM product P LEFT OUTER JOIN category C ON C.cid = P.cid WHERE (P.count-C.min)/(C.min-C.max) < 20), `ful`=(select count(*) FROM product)  WHERE 1");
-            System.out.println("xxxx");
+            connection = Db_connect.getConnection();
+            st = connection.createStatement();
+            int rs = st.executeUpdate("UPDATE `global` SET `low`=(select count(*) FROM product P LEFT OUTER JOIN category C ON C.cid = P.cid WHERE (P.count-C.min)*100/(C.max-C.min) < 20), `ful`=(select count(*) FROM product)  WHERE 1");
+            //int rs = st.executeUpdate("select * FROM product P LEFT OUTER JOIN category C ON C.cid = P.cid WHERE (P.count-C.min)*100/(C.max-C.min) < 20");
+            //System.out.println(rs);
+//            System.out.println("xxxx");
+            ResultSet rs1 = st.executeQuery("SELECT * FROM `global` WHERE 1");
+            rs1.next();
+            int low = rs1.getInt("low");
+            int max = rs1.getInt("ful");
+            jProgressBar1.setValue(low * 100 / max);
+            System.out.println(low * 100 / max);
         } catch (SQLException ex) {
             Logger.getLogger(SupplierMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            if (connection != null) {
+                st.close();
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void setColor(JPanel pane) {

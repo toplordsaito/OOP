@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class Db_connect {
     public static Connection getConnection() {
         Connection con;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/oop", "root", "ason12345");
+            con = DriverManager.getConnection("jdbc:mysql://192.168.99.100:3306/oop", "root", "keep1234");
             return con;
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +49,7 @@ public class Db_connect {
 
     public static void executeSQlQuery(String query, String message) {
         Connection con = new Db_connect().getConnection();
-        Statement st;
+        Statement st = null;
         try {
             st = con.createStatement();
             if ((st.executeUpdate(query)) == 1) {
@@ -61,6 +62,14 @@ public class Db_connect {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+        try {
+            if (con != null) {
+                st.close();
+                con.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

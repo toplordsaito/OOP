@@ -390,7 +390,7 @@ public class AddUser extends javax.swing.JFrame {
             + "',`role`= '" + p.getRole()
             + "' WHERE `uid` = '" + p.getUid() + "'";
             Db_connect.executeSQlQuery(query, "Updated");
-            Db_connect.NewLog("UPDATE", "1",  p.getName(), "update user");
+            Db_connect.NewLog("UPDATE", "1",  p.getUid()+"", "update user");
             System.out.println("5555");
         }
         this.dispose();

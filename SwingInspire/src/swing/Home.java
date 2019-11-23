@@ -6,6 +6,11 @@
 package swing;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.*;
 
@@ -914,8 +919,19 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+    public void updateCountSupplier() {
+        try {
+            Connection connection = Db_connect.getConnection();
+            Statement st = connection.createStatement();
+            int rs = st.executeUpdate("UPDATE `global` SET `low`=(select count(*) FROM product P LEFT OUTER JOIN category C ON C.cid = P.cid WHERE (P.count-C.min)/(C.min-C.max) < 20), `ful`=(select count(*) FROM product)  WHERE 1");
+            System.out.println("xxxx");
+        } catch (SQLException ex) {
+            Logger.getLogger(SupplierMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void setColor(JPanel pane) {
+        updateCountSupplier();
         pane.setBackground(new Color(41, 57, 80));
     }
 

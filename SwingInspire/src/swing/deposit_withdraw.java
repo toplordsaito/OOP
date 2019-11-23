@@ -315,7 +315,7 @@ public class deposit_withdraw extends javax.swing.JFrame {
     private void btn_exitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_exitMousePressed
         // TODO add your handling code here:
 
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btn_exitMousePressed
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged

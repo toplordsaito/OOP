@@ -43,7 +43,7 @@ public class HomePanel extends javax.swing.JPanel {
      */
     public HomePanel() {
         initComponents();
-        productMenu1.SetQueryTable("WHERE count <= '20' ");
+        productMenu1.SetQueryTable("LEFT OUTER JOIN category ON product.cid=category.cid WHERE (product.count - category.min)*100/(category.max-category.min) < 20");
     }
 
     /**

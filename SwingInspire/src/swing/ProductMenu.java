@@ -103,14 +103,14 @@ public class ProductMenu extends javax.swing.JPanel {
             row[0] = list.get(i).getPid();
             row[1] = Db_connect.getIcon(list.get(i).getImg(), "product");
             row[2] = list.get(i).getName();
-            row[3] = list.get(i).getCount() * 100 / getMax(list.get(i).getCid()); //list.get(i).getIcon();
+            row[3] = getMax(list.get(i).getCid(), list.get(i).getCount()); //list.get(i).getIcon();
             model.addRow(row);
         }
 
     }
 
-    public int getMax(int cid) {
-        String query = "SELECT `max` FROM `category` WHERE `cid`=" + cid;
+    public int getMax(int cid,int count) {
+        String query = "SELECT `max`,`min`  FROM `category` WHERE `cid`=" + cid;
         Connection connection = Db_connect.getConnection();
         Statement st;
         ResultSet rs;
@@ -118,7 +118,9 @@ public class ProductMenu extends javax.swing.JPanel {
             st = connection.createStatement();
             rs = st.executeQuery(query);
             rs.next();
-            return rs.getInt("max");
+            int max = rs.getInt("max");
+            int min = rs.getInt("min");
+            return (count-min)*100/(max-min);
         } catch (Exception e) {
             e.printStackTrace();
             return 100;

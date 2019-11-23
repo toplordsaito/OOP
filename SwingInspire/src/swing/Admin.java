@@ -85,7 +85,7 @@ public class Admin extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        jLabel3.setText(count + " ผลลัพธ์");
+        jLabel3.setText(count + " Result");
         return a_list;
     }
 
@@ -167,6 +167,11 @@ public class Admin extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -198,14 +203,13 @@ public class Admin extends javax.swing.JPanel {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(3, 3, 3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
         // TODO add your handling code here:
-        //SetQueryTableSearch(" `name` LIKE '%" + jTextField1.getText() + "%'");
+        SetQueryTableSearch(" `name` LIKE '%" + jTextField1.getText() + "%'");
         // SetQueryTableSearch(" `pid` = "+ jTextField1.getText() + "");
         //SetQueryTableSearch("`name` LIKE '%"+ jTextField1.getText() +"%' OR `pid` =" + jTextField1.getText());
     }//GEN-LAST:event_jLabel2MousePressed
@@ -213,6 +217,12 @@ public class Admin extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        int i = jTable1.getSelectedRow();
+        User u = getUserList().get(i);
+        new AddUser(u);
+    }//GEN-LAST:event_jTable1MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

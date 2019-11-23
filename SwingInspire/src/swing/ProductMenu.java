@@ -90,7 +90,7 @@ public class ProductMenu extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        jLabel3.setText(count + " ผลลัพธ์");
+        jLabel3.setText(count + " Results");
         return p_list;
     }
 

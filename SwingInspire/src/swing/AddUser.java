@@ -19,9 +19,9 @@ public class AddUser extends javax.swing.JFrame {
         this.p = p;
         jLabel8.setText("#" + p.getUid());
         jTextField2.setText(p.getName());
-        jTextField4.setText(p.getSurname() + "");
-        jTextField3.setText(p.getUser() + "");
-        jTextField1.setText(p.getRole() + "");
+        jTextField4.setText(p.getSurname());
+        jTextField3.setText(p.getUser());
+        jTextField1.setText(p.getRole());
         jPasswordField1.setText(p.getPass());
         new_img = p.getImg();
         Db_connect.ShowIMG(jLabel1, p.getImg(), "user");
@@ -432,7 +432,7 @@ public class AddUser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddUser().setVisible(true);
+                new AddUser(new User()).setVisible(true);
             }
         });
     }

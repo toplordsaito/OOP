@@ -23,7 +23,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     public Home(User u) {
-        setUndecorated(true);
+        //setUndecorated(true);
         initComponents();
         resetColor();
 
@@ -118,6 +118,7 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         side_pane.setBackground(new java.awt.Color(23, 35, 51));

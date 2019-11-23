@@ -509,7 +509,8 @@ public class Home extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Friday 23 Feb ");
 
-        btn_7.setBackground(new java.awt.Color(120, 168, 252));
+        btn_7.setBackground(new java.awt.Color(204, 0, 51));
+        btn_7.setForeground(new java.awt.Color(120, 168, 252));
         btn_7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -754,8 +755,6 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18))
         );
-
-        label3.getAccessibleContext().setAccessibleName("CHART");
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 300, 540));
 

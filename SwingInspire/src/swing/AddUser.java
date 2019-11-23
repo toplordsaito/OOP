@@ -19,7 +19,8 @@ public class AddUser extends javax.swing.JFrame {
         this.p = p;
         jLabel8.setText("#" + p.getUid());
         jTextField2.setText(p.getName());
-        jTextField3.setText(p.getSurname() + "");
+        jTextField4.setText(p.getSurname() + "");
+        jTextField3.setText(p.getUser() + "");
         jTextField1.setText(p.getRole() + "");
         jPasswordField1.setText(p.getPass());
         new_img = p.getImg();
@@ -56,6 +57,8 @@ public class AddUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -109,7 +112,7 @@ public class AddUser extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
@@ -144,7 +147,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(211, 211, 211));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(188, 213, 255));
-        jLabel7.setText("ADD USER ");
+        jLabel7.setText("USER ");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(188, 213, 255));
@@ -185,6 +188,12 @@ public class AddUser extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.setText("jTextField1");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Surname");
+
+        jTextField4.setText("jTextField4");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -194,18 +203,6 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8))
@@ -213,7 +210,21 @@ public class AddUser extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGap(0, 14, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField4)
+                            .addComponent(jPasswordField1)
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                            .addComponent(jTextField1))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,6 +239,10 @@ public class AddUser extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -270,32 +285,33 @@ public class AddUser extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         p.setName(jTextField2.getText());
-        p.setSurname(jTextField3.getText());
+        p.setSurname(jTextField4.getText());
+        p.setUser(jTextField3.getText());
         p.setPass(String.valueOf(jPasswordField1.getPassword()));
         p.setRole(jTextField1.getText());
         if (p.getUid() == 0) {
-            String query = "INSERT INTO `user`(`name`, `surname`, `user`, `pass`, `role`,`img`) VALUES ('"
+            String query = "INSERT INTO `user`(`fname`, `lname`, `user`, `pass`, `role`,`img`) VALUES ('"
             + p.getName()
             + "','" + p.getSurname()
-            + "'," + p.getUser()
-            + "," + p.getPass()
-            + "," + p.getRole()
-            + ",'" + new_img
-            + ")";
+            + "','" + p.getUser()
+            + "','" + p.getPass()
+            + "','" + p.getRole()
+            + "','" + new_img
+            + "')";
             System.out.println(query);
             Db_connect.executeSQlQuery(query, "Created");
             Db_connect.NewLog("CREATE", "1", "0", "create user");
 
         } else {
-            String query = "UPDATE `user` SET `name`='" + p.getName()
+            String query = "UPDATE `user` SET `fname`='" + p.getName()
             + "',`img`='" + new_img
-            + "',`surname`=" + p.getSurname()
-            + ",`user`=" + p.getUser()
-            + ",`pass`=" + p.getPass()
-            + ",`role`='" + p.getRole()
-            + "' WHERE `uid` = " + p.getUid();
+            + "',`lname`= '" + p.getSurname()
+            + "',`user`= '" + p.getUser()
+            + "',`pass`= '" + p.getPass()
+            + "',`role`= '" + p.getRole()
+            + "' WHERE `uid` = '" + p.getUid() + "'";
             Db_connect.executeSQlQuery(query, "Updated");
-            Db_connect.NewLog("UPDATE", "1", jTextField1.getText(), "update user");
+            Db_connect.NewLog("UPDATE", "1",  p.getName(), "update user");
             System.out.println("5555");
         }
         this.dispose();
@@ -370,6 +386,7 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -382,6 +399,7 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
     private String new_img = "";
     private User p;

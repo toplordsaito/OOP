@@ -62,10 +62,7 @@ public class Chart_withdraw extends JFrame {
             while (rs.next()) {
                 //double date, int uid, int target, String string, String type
                 l = new log(new Timestamp(Long.parseLong(rs.getString("date"))), rs.getInt("uid"), rs.getInt("target"), rs.getString("string"), rs.getString("type"));
-                String sql = "SELECT  `name` FROM `product` WHERE `pid` =" + l.getTarget();
-                ResultSet rec = st.executeQuery(sql);
-                rec.next();
-                name = rec.getString("name");
+                
 
                 if ("WITHDRAW".equals(l.getType())) {
 
@@ -123,7 +120,6 @@ public class Chart_withdraw extends JFrame {
                 System.out.println(number[1]);
                 Connection connection = Db_connect.getConnection();
                 Statement st;
-                ResultSet rs;
                 try {
                     st = connection.createStatement();
                     String sql = "SELECT  `name` FROM `product` WHERE `pid` =" + w_list.get(i).getTarget();

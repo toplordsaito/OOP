@@ -71,6 +71,7 @@ public class Home extends javax.swing.JFrame {
         btn_5 = new javax.swing.JPanel();
         ind_5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         btn_exit = new javax.swing.JLabel();
@@ -342,7 +343,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(ind_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel14)
-                .addGap(0, 62, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
         btn_5Layout.setVerticalGroup(
             btn_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,12 +351,20 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(ind_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(btn_5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(45, 45, 45)
                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         side_pane.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/75204545_837688220009329_4534640665983713280_n.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel7MousePressed(evt);
+            }
+        });
+        side_pane.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
 
         getContentPane().add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 590));
 
@@ -872,6 +881,10 @@ public class Home extends javax.swing.JFrame {
         new Chart_product().init();
     }//GEN-LAST:event_btn_11MouseReleased
 
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -962,6 +975,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;

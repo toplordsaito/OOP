@@ -30,7 +30,7 @@ public class SupplierMenu extends javax.swing.JPanel {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "sid", "name", "lastname", "product", "photo"
+                    "SID", "Name", "Lastname", "Product", "Photo"
                 }
         ) {
             @Override

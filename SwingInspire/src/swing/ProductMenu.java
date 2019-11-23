@@ -27,7 +27,7 @@ public class ProductMenu extends javax.swing.JPanel {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "id", "photo", "name", "qualtity"
+                    "ID", "Photo", "Name", "Qualtity"
                 }
         ) {
             @Override
@@ -41,7 +41,7 @@ public class ProductMenu extends javax.swing.JPanel {
             }
         }
         );
-        jTable1.getColumn("qualtity").setCellRenderer(new ProgressCellRenderer());
+        jTable1.getColumn("Qualtity").setCellRenderer(new ProgressCellRenderer());
 
         //init
         Show_Users_In_JTable();
@@ -103,10 +103,26 @@ public class ProductMenu extends javax.swing.JPanel {
             row[0] = list.get(i).getPid();
             row[1] = Db_connect.getIcon(list.get(i).getImg(), "product");
             row[2] = list.get(i).getName();
-            row[3] = list.get(i).getCount(); //list.get(i).getIcon();
+            row[3] = list.get(i).getCount() * 100 / getMax(list.get(i).getCid()); //list.get(i).getIcon();
             model.addRow(row);
         }
 
+    }
+
+    public int getMax(int cid) {
+        String query = "SELECT `max` FROM `category` WHERE `cid`=" + cid;
+        Connection connection = Db_connect.getConnection();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            rs.next();
+            return rs.getInt("max");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 100;
+        }
     }
 
     /**
@@ -139,7 +155,6 @@ public class ProductMenu extends javax.swing.JPanel {
                 "ID", "Photo", "Name", "Qualtity"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(60);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -206,19 +221,17 @@ public class ProductMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel3)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(9, 9, 9))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(9, 9, 9)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -38,7 +38,7 @@ import java.util.Map;
  */
 public class Chart_withdraw extends JFrame {
 
-    private int cc = 2;
+    private int cc = 1;
     private JFXPanel fxPanel;
     private JButton b1;
     private String string_query = "SELECT * FROM  `log` ";
@@ -85,7 +85,7 @@ public class Chart_withdraw extends JFrame {
         fxPanel = new JFXPanel();
         mainPanel.add(fxPanel, BorderLayout.CENTER);
         b1 = new JButton("Change Chart");
-        JLabel titleLabel = new JLabel("Products");
+        JLabel titleLabel = new JLabel("WithDraw");
         titleLabel.setFont(new Font("Courier", Font.BOLD, 30));
         JPanel p = new JPanel(new GridLayout(1, 5));
         p.add(new JLabel(""));

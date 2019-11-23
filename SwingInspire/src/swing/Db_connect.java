@@ -99,6 +99,19 @@ public class Db_connect {
         }
         return null;
     }
+    public static ImageIcon getIcon2(String name, String type) {
+        try {
+            String ImagePath = new File(".").getCanonicalPath() + "\\img\\" + type + "\\" + name;
+            ImageIcon MyImage = new ImageIcon(ImagePath);
+            Image imgz = MyImage.getImage();
+            Image newImg = imgz.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
+            ImageIcon image = new ImageIcon(newImg);
+            return image;
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
 
     public static String BrowImg(String type) {
         JFileChooser fileopen = new JFileChooser();

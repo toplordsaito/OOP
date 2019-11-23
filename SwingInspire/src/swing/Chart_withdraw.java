@@ -15,6 +15,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -25,6 +28,9 @@ import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.StackPane;
 import javax.swing.*;
+import java.util.LinkedHashMap; 
+import java.util.Map; 
+
 
 /**
  *
@@ -56,17 +62,21 @@ public class Chart_withdraw extends JFrame {
             while (rs.next()) {
                 //double date, int uid, int target, String string, String type
                 l = new log(new Timestamp(Long.parseLong(rs.getString("date"))), rs.getInt("uid"), rs.getInt("target"), rs.getString("string"), rs.getString("type"));
+                String sql = "SELECT  `name` FROM `product` WHERE `pid` =" + l.getTarget();
+                ResultSet rec = st.executeQuery(sql);
+                rec.next();
+                name = rec.getString("name");
 
                 if ("WITHDRAW".equals(l.getType())) {
 
                     withdraw_list.add(l);
-                }
 
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-            return withdraw_list;
+        return withdraw_list;
     }
 
     public void init() {
@@ -135,17 +145,17 @@ public class Chart_withdraw extends JFrame {
             fxPanel.setScene(scene);
             pieChart.setMinSize(700, 700);
         } else {
-                NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
-                //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
-                lineYAxis.setLabel("Numbers");
-                CategoryAxis lineXAxis = new CategoryAxis();
-                lineXAxis.setLabel("Products");
-                StackedBarChart barChart
-                        = new StackedBarChart<>(lineXAxis, lineYAxis);
+            NumberAxis lineYAxis = new NumberAxis(0, 200, 10);
+            //lineYAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(lineYAxis,"$",null));
+            lineYAxis.setLabel("Numbers");
+            CategoryAxis lineXAxis = new CategoryAxis();
+            lineXAxis.setLabel("Products");
+            StackedBarChart barChart
+                    = new StackedBarChart<>(lineXAxis, lineYAxis);
 
-                for (int i = 0; i < w_list.size(); i++) {
-                    String[] number = w_list.get(i).getString().split(" ");
-                    Connection connection = Db_connect.getConnection();
+            for (int i = 0; i < w_list.size(); i++) {
+                String[] number = w_list.get(i).getString().split(" ");
+                Connection connection = Db_connect.getConnection();
                 Statement st;
                 ResultSet rs;
                 try {
@@ -159,17 +169,17 @@ public class Chart_withdraw extends JFrame {
                     e.printStackTrace();
                 }
                 num = Integer.parseInt(number[1]);
-                    XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
-                    series1.setName(name);
-                    series1.getData().add(new XYChart.Data<String, Number>(name, num));
-                    barChart.getData().add(series1);
-                }
-
-                StackPane root = new StackPane(barChart);
-                Scene scene = new Scene(root, 800, 800);
-                fxPanel.setScene(scene);
-                barChart.setMinSize(700, 700);
+                XYChart.Series<String, Number> series1 = new XYChart.Series<String, Number>();
+                series1.setName(name);
+                series1.getData().add(new XYChart.Data<String, Number>(name, num));
+                barChart.getData().add(series1);
             }
+
+            StackPane root = new StackPane(barChart);
+            Scene scene = new Scene(root, 800, 800);
+            fxPanel.setScene(scene);
+            barChart.setMinSize(700, 700);
+        }
     }
 
     public static void main(String[] args) {

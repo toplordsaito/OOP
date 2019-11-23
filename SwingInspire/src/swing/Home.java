@@ -47,7 +47,7 @@ public class Home extends javax.swing.JFrame {
         setHomePage(home);
         setVisible(true);
         this.u = u;
-        jLabel2.setIcon(Db_connect.getIcon(u.getImg(), "user"));
+        jLabel2.setIcon(Db_connect.getIcon2(u.getImg(), "user"));
         jLabel12.setText(u.getName());
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd");

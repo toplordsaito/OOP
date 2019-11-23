@@ -41,12 +41,10 @@ public class Chart_withdraw extends JFrame {
     private int blue = 200;
     private String name;
     private int num;
-    ArrayList<log> w_list = getLogList(0);
-    ArrayList<log> d_list = getLogList(1);
+    ArrayList<log> w_list = getLogList();
 
-    public ArrayList<log> getLogList(int i) {
+    public ArrayList<log> getLogList() {
         ArrayList<log> withdraw_list = new ArrayList<log>();
-        ArrayList<log> draw_list = new ArrayList<log>();
         Connection connection = Db_connect.getConnection();
 
         Statement st;
@@ -62,19 +60,13 @@ public class Chart_withdraw extends JFrame {
                 if ("WITHDRAW".equals(l.getType())) {
 
                     withdraw_list.add(l);
-                } else {
-                    draw_list.add(l);
                 }
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (i == 0) {
             return withdraw_list;
-        } else {
-            return draw_list;
-        }
     }
 
     public void init() {

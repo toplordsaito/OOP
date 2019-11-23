@@ -5,6 +5,11 @@
  */
 package swing;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author waruwat
@@ -21,6 +26,24 @@ public class deposit_withdraw extends javax.swing.JFrame {
         this.p = p;
         jLabel3.setText(p.getName());
         jLabel5.setText(p.getCount() + "");
+        Connection connection = Db_connect.getConnection();
+        Statement st;
+        ResultSet rs;
+        int count;
+        try {
+            st = connection.createStatement();
+
+            String query = "SELECT `name`, `max`, `min` FROM `category` WHERE `cid`=" + p.getCid();
+
+            rs = st.executeQuery(query);
+            rs.next();
+            jLabel8.setText(rs.getString("name"));
+            max = rs.getInt("max");
+            min = rs.getInt("min");
+            jLabel9.setText("คุณสามารถเหลือสินค้าได้ไม่เกิน" + max + " ชิ้น และไม่ต่ำกว่า" + min + "ชิ้น");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -42,6 +65,9 @@ public class deposit_withdraw extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,14 +115,21 @@ public class deposit_withdraw extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("ประเภทสินค้า");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("jLabel8");
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("jLabel9");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(53, 53, 53))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -104,18 +137,29 @@ public class deposit_withdraw extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(122, 122, 122)
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(jButton2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(102, 102, 102))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,15 +174,20 @@ public class deposit_withdraw extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(13, 13, 13)
+                .addComponent(jLabel9))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,30 +207,34 @@ public class deposit_withdraw extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int val = Integer.parseInt(jTextField1.getText());
         int ans;
-        if (p.getCount() - val >= 0) {
+        if (p.getCount() - val >= min) {
             ans = p.getCount() - val;
+            String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=" + p.getPid();
+            Db_connect.executeSQlQuery(query, "Withdrawed");
+            Db_connect.NewLog("WITHDRAW", "1", p.getPid() + "", "withdraw " + val + " หน่วย จาก " + p.getPid());
+            this.dispose();
         } else {
+            JOptionPane.showMessageDialog(null, "VALUE LESS THAN MIN");
             return;
         }
-        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=1";
-        Db_connect.executeSQlQuery(query, "Withdrawed");
-        Db_connect.NewLog("WITHDRAW", "1", p.getPid() + "", "withdraw " + val + " หน่วย จาก " + p.getPid());
-        this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int val = Integer.parseInt(jTextField1.getText());
         int ans;
-        if (p.getCount() + val <= 100) {
+        if (p.getCount() + val <= max) {
             ans = p.getCount() + val;
+            String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=" + p.getPid();
+            Db_connect.executeSQlQuery(query, "Deposited");
+            Db_connect.NewLog("DEPOSIT", "1", p.getPid() + "", "deposit " + jTextField1.getText() + " หน่วย จาก " + p.getPid());
+            this.dispose();
         } else {
+            JOptionPane.showMessageDialog(null, "VALUE OVER THAN MAX");
             return;
         }
-        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=1";
-        Db_connect.executeSQlQuery(query, "Deposited");
-        Db_connect.NewLog("DEPOSIT", "1", p.getPid() + "", "deposit " + jTextField1.getText() + " หน่วย จาก " + p.getPid());
-        this.dispose();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -228,8 +281,12 @@ public class deposit_withdraw extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
     private Product p;
+    private int max, min;
 }

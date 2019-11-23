@@ -162,7 +162,7 @@ public class ProductDetail extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton4.setText("เบิก/ถอน");
+        jButton4.setText("เบิก/ฝาก");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

@@ -379,7 +379,7 @@
             </Container>
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xe40;&#xe1a;&#xe34;&#xe01;/&#xe16;&#xe2d;&#xe19;"/>
+                <Property name="text" type="java.lang.String" value="&#xe40;&#xe1a;&#xe34;&#xe01;/&#xe1d;&#xe32;&#xe01;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

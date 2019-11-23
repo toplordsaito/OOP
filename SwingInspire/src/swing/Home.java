@@ -19,10 +19,14 @@ public class Home extends javax.swing.JFrame {
      * Creates new form Home
      */
     public Home() {
+        this(new User());
+    }
+
+    public Home(User u) {
         setUndecorated(true);
         initComponents();
         resetColor();
-        
+
         ind_1.setOpaque(true);
         setColor(btn_1);
         jProgressBar1.setValue(50);
@@ -34,6 +38,9 @@ public class Home extends javax.swing.JFrame {
 
         setHomePage(home);
         setVisible(true);
+        this.u = u;
+        jLabel2.setIcon(Db_connect.getIcon(u.getImg(), "user"));
+        jLabel12.setText(u.getName());
     }
 
     public void setHomePage(JPanel j) {
@@ -979,5 +986,6 @@ public class Home extends javax.swing.JFrame {
     private ProductMenu p_menu;
     private SupplierMenu s_menu;
     private All_Log log_menu;
+    private User u;
 
 }

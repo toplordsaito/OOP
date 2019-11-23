@@ -94,7 +94,7 @@ public class deposit_withdraw extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(53, 53, 53))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -138,7 +138,7 @@ public class deposit_withdraw extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,9 +163,10 @@ public class deposit_withdraw extends javax.swing.JFrame {
         } else {
             return;
         }
-        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=1";
+        
+        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid="+p.getPid();
         Db_connect.executeSQlQuery(query, "Withdrawed");
-        Db_connect.NewLog("WITHDRAW", "1", p.getPid() + "", "withdraw " + val + " หน่วย จาก " + p.getPid());
+        Db_connect.NewLog("WITHDRAW", "1", p.getPid() + "", "withdraw " + val + " unit form " + p.getPid());
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -178,9 +179,10 @@ public class deposit_withdraw extends javax.swing.JFrame {
         } else {
             return;
         }
-        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid=1";
+        String query = "UPDATE `product` SET `count`= " + ans + " WHERE pid="+p.getPid();
+        System.out.println("ns="+ans);
         Db_connect.executeSQlQuery(query, "Deposited");
-        Db_connect.NewLog("DEPOSIT", "1", p.getPid() + "", "deposit " + jTextField1.getText() + " หน่วย จาก " + p.getPid());
+        Db_connect.NewLog("DEPOSIT", "1", p.getPid() + "", "deposit " + jTextField1.getText() + " unit from " + p.getPid());
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

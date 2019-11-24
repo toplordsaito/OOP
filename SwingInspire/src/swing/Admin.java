@@ -232,7 +232,7 @@ public class Admin extends javax.swing.JPanel {
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
         // TODO add your handling code here:
-        //SetQueryTableSearch(" `name` LIKE '%" + jTextField1.getText() + "%'");
+        SetQueryTableSearch(" `fname` LIKE '%" + jTextField1.getText() + "%'");
         // SetQueryTableSearch(" `pid` = "+ jTextField1.getText() + "");
         //SetQueryTableSearch("`name` LIKE '%"+ jTextField1.getText() +"%' OR `pid` =" + jTextField1.getText());
     }//GEN-LAST:event_jLabel2MousePressed

@@ -180,6 +180,7 @@ public class Admin extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        jTable1.setRowHeight(50);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTable1FocusGained(evt);

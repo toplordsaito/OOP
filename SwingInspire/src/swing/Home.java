@@ -7,6 +7,7 @@ package swing;
 
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -43,6 +44,7 @@ public class Home extends javax.swing.JFrame {
         p_menu = new ProductMenu();
         s_menu = new SupplierMenu();
         log_menu = new All_Log();
+        a_menu = new Admin();
 
         setHomePage(home);
         setVisible(true);
@@ -56,6 +58,7 @@ public class Home extends javax.swing.JFrame {
         
         jLabel6.setText(formatter.format(date));
         jLabel13.setText(formatter1.format(date));
+        isAdmin(u);
     }
 
     public void setHomePage(JPanel j) {
@@ -94,6 +97,9 @@ public class Home extends javax.swing.JFrame {
         ind_5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btn_7 = new javax.swing.JPanel();
+        ind_7 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         btn_exit = new javax.swing.JLabel();
@@ -377,6 +383,60 @@ public class Home extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/logo_r.png"))); // NOI18N
         side_pane.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
+
+        btn_7.setBackground(new java.awt.Color(23, 35, 51));
+        btn_7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_7MousePressed(evt);
+            }
+        });
+
+        ind_7.setOpaque(false);
+        ind_7.setPreferredSize(new java.awt.Dimension(3, 43));
+
+        javax.swing.GroupLayout ind_7Layout = new javax.swing.GroupLayout(ind_7);
+        ind_7.setLayout(ind_7Layout);
+        ind_7Layout.setHorizontalGroup(
+            ind_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        ind_7Layout.setVerticalGroup(
+            ind_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+        );
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Admin");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel16MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btn_7Layout = new javax.swing.GroupLayout(btn_7);
+        btn_7.setLayout(btn_7Layout);
+        btn_7Layout.setHorizontalGroup(
+            btn_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_7Layout.createSequentialGroup()
+                .addComponent(ind_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel16)
+                .addGap(0, 45, Short.MAX_VALUE))
+        );
+        btn_7Layout.setVerticalGroup(
+            btn_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_7Layout.createSequentialGroup()
+                .addComponent(ind_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(btn_7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        side_pane.add(btn_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 120, -1));
 
         getContentPane().add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 590));
 
@@ -736,7 +796,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 300, 540));
@@ -835,6 +895,20 @@ public class Home extends javax.swing.JFrame {
         new Chart_product().init();
     }//GEN-LAST:event_btn_11MouseReleased
 
+    private void btn_7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_7MousePressed
+        resetColor();
+        ind_7.setOpaque(true);
+        setColor(btn_7);
+        setHomePage(a_menu);
+    }//GEN-LAST:event_btn_7MousePressed
+
+    private void jLabel16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MousePressed
+        resetColor();
+        ind_7.setOpaque(true);
+        setColor(btn_7);
+        setHomePage(a_menu);
+    }//GEN-LAST:event_jLabel16MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -899,6 +973,14 @@ public class Home extends javax.swing.JFrame {
         }
 
     }
+    
+    private void isAdmin(User u) {
+        if (u.getRole().equals("admin")) {
+            btn_7.setVisible(true);
+        } else {
+            btn_7.setVisible(false);
+        }
+    }
 
     private void setColor(JPanel pane) {
         updateCountSupplier();
@@ -906,8 +988,8 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void resetColor() {
-        JPanel[] pane = new JPanel[]{btn_2, btn_3, btn_4, btn_1, btn_5};
-        JPanel[] indicators = new JPanel[]{ind_2, ind_3, ind_4, ind_1, ind_5};
+        JPanel[] pane = new JPanel[]{btn_2, btn_3, btn_4, btn_1, btn_5, btn_7};
+        JPanel[] indicators = new JPanel[]{ind_2, ind_3, ind_4, ind_1, ind_5, ind_7};
         for (int i = 0; i < pane.length; i++) {
             pane[i].setBackground(new Color(23, 35, 51));
 
@@ -927,6 +1009,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btn_3;
     private javax.swing.JPanel btn_4;
     private javax.swing.JPanel btn_5;
+    private javax.swing.JPanel btn_7;
     private javax.swing.JPanel btn_8;
     private javax.swing.JPanel btn_9;
     private javax.swing.JLabel btn_exit;
@@ -937,6 +1020,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel ind_3;
     private javax.swing.JPanel ind_4;
     private javax.swing.JPanel ind_5;
+    private javax.swing.JPanel ind_7;
     private javax.swing.JPanel ind_8;
     private javax.swing.JPanel ind_9;
     private javax.swing.JLabel jLabel10;
@@ -944,6 +1028,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -973,5 +1058,6 @@ public class Home extends javax.swing.JFrame {
     private SupplierMenu s_menu;
     private All_Log log_menu;
     private User u;
+    private Admin a_menu;
 
 }

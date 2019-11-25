@@ -138,7 +138,6 @@ public class SupplierMenu extends javax.swing.JPanel {
                 "SID", "Name", "Lastname", "Product", "Photo"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(50);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -156,6 +155,7 @@ public class SupplierMenu extends javax.swing.JPanel {
         }
 
         jTextField1.setBackground(new java.awt.Color(123, 156, 225));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -211,7 +211,7 @@ public class SupplierMenu extends javax.swing.JPanel {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

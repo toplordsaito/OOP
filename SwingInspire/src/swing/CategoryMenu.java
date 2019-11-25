@@ -117,7 +117,6 @@ public class CategoryMenu extends javax.swing.JPanel {
                 "CID", "Name", "Product", "Max", "Min"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jTable1.setRowHeight(60);
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -136,6 +135,7 @@ public class CategoryMenu extends javax.swing.JPanel {
         jLabel1.setText(" Category");
 
         jTextField1.setBackground(new java.awt.Color(123, 156, 225));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

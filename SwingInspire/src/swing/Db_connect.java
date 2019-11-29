@@ -38,7 +38,7 @@ public class Db_connect {
     public static Connection getConnection() {
         Connection con;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/oop", "root", "ason12345");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/oop", "root", "");
             return con;
         } catch (Exception e) {
             e.printStackTrace();
